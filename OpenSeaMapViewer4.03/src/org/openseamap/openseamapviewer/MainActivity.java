@@ -43,7 +43,7 @@ public class MainActivity extends Activity {
 	private static final int releaseSweden = 2;
 	private static final int releaseDevelop = 3;
 	
-	private static final int releaseVersion = 3;
+	private static final int releaseVersion = 1;
 	
 	public static final String OPENSEAMAP_STANDARDRENDERERNAME ="openseamaprenderer001.xml";
 	public static final String OPENSEAMAP_STANDARDSYMBOLDEFS ="symbols.xml";  // since 13_01_09
@@ -57,9 +57,9 @@ public class MainActivity extends Activity {
 	
 	// deal with prefs
 	public static final int PREV_APP_VERSION =  51;
-	public static final int PREV_APP_BUILD = 24;   // last from 13_04_25
+	public static final int PREV_APP_BUILD = 25;   // last from  13_10_13
 	public static final String PREV_APP_VERSION_STR ="0.51";
-	public static final String PREV_APP_BUILD_STR = "24";
+	public static final String PREV_APP_BUILD_STR = "25";
 	 
 	public static final String PREF_ZOOM_FACTOR ="zoom_factor";
 	public static final String PREV_LAST_GEOPOINT_LAT ="lastgeopointlat";

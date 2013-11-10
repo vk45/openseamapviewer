@@ -250,14 +250,16 @@ public class DevelopementStatus {
     *       13_04_27  Problem mit navigation_line , siehe SeamarkItemizedOverlayWithInfoPois.drawSeamarkWay , Zeile 503
     *       
     *       if (navLineOrientationStr != null){
-						// there may be a Problem see example v="180°18&#39;" from Wismarbucht4 way id="139699229" 
-						// or v="006°24&#39;"  from way id="139691959" 
-					}
-					
-		    Wie soll so was geparsed werden?
+	*					// there may be a Problem see example v="180°18&#39;" from Wismarbucht4 way id="139699229" 
+	*					// or v="006°24&#39;"  from way id="139691959" 
+	*				}
+	*				
+	*	    Wie soll so was geparsed werden?
     *       
-    *       
-    *       
+    *     13_10_13
+    *     
+    *     river kilometer angaben eingef�gt
+    *     neuer build als public 
      *    
      *    todo:
      *    LocationListener abstrahieren

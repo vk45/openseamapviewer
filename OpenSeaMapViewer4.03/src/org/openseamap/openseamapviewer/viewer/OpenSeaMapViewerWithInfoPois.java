@@ -842,14 +842,18 @@ private void removeSeamarkNodeFromOverlay (SeamarkNode aSeamarkNode){
 	private boolean isInfoSeamark(SeamarkNode aSeamarkNode){
 		boolean result = false;
 		String seamarkType = aSeamarkNode.getValueToKey("seamark:type");
+		
 		if ( seamarkType != null) {
-			if ((seamarkType.contains("small_craft_facility")
-					||(seamarkType.contains("mooring"))
-					||(seamarkType.contains("harbour"))
-					|| seamarkType.contains("bridge"))
-					|| seamarkType.contains("cable")) {
-				result = true;
-			}
+			if (  
+				   seamarkType.contains("small_craft_facility")
+				|| seamarkType.contains("mooring")
+				|| seamarkType.contains("harbour")
+				|| seamarkType.contains("bridge")
+				|| seamarkType.contains("cable_overhead") 
+				|| seamarkType.contains("distance_mark")
+			   ){
+				  result = true;
+			    }
 		}
 		return result;
 	}

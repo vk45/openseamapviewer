@@ -120,6 +120,11 @@ public class SeamarkDrawable {
         	   handleCableOverhead();
         	   mDrawable = new BitmapDrawable(mSeamarkBitmap);
            }
+           if (seamarkType.equals("distance_mark")){
+        	   handleDistance_mark();
+        	   mDrawable = new BitmapDrawable(mSeamarkBitmap);
+           }
+           
            if (seamarkType.equals("anchorage")){
         	   handleAnchorage();
         	   mDrawable = new BitmapDrawable(mSeamarkBitmap);
@@ -995,6 +1000,62 @@ public class SeamarkDrawable {
 				  mPaint.setTextAlign(Align.CENTER);
 				  mCanvas.drawText(verticalClearanceStr, centerX ,centerY + 5, mPaint);
 			  }
+		  
+   }
+   
+private void handleDistance_mark(){
+	
+	//    <tag k="seamark:distance_mark:distance" v="2344"/>
+	//    <tag k="seamark:distance_mark:units" v="kilometres"/>
+	//     <tag k="seamark:type" v="distance_mark"/>
+
+	   SeamarkSymbol aSymbol = SeamarkSymbol.getSeamarkSymbol("distance_mark");
+	   if (aSymbol!= null) {
+		   Path path = aSymbol.getPath();
+		   if (path!= null) {
+			   path.setFillType(FillType.EVEN_ODD);
+			   mSymbolWidth = aSymbol.getWidth();
+			   mSymbolHeight = aSymbol.getHeight();
+			   /*bitmapWidth = mBase;
+			   bitmapHeight = mBase;
+			   seamarkBitmap = Bitmap.createBitmap(bitmapWidth,bitmapHeight,mBitmapConfig);
+			   canvas = new Canvas(seamarkBitmap);*/
+			   PathShape aPathShape = new PathShape(path, mSymbolWidth,mSymbolHeight);
+		       aPathShape.resize(mBitmapWidth ,mBitmapHeight);
+			   //aPathShape.resize(mSymbolWidth, mSymbolHeight);
+		       mPaint.setStrokeWidth(2);
+		       mPaint.setStyle(Paint.Style.STROKE);
+		       mPaint.setColor(Color.BLACK);
+		       aPathShape.draw(mCanvas, mPaint);
+		   }
+	   }  
+	   if (mZoomLevel >= 13) {
+	   String distanceMarkStr = mSeamarkNode.getValueToKey("seamark:distance_mark:distance");
+	   
+			  if (distanceMarkStr != null) {
+				  //mPaint.setStyle(Style.FILL);
+				  //mPaint.setColor(Color.WHITE);
+				  float centerX = mBitmapWidth *0.5f;
+				  float centerY = mBitmapHeight *0.5f;
+				  mPaint.setStrokeWidth(1);
+				  //mCanvas.drawCircle( centerX,centerY,15, mPaint);
+				  mPaint.setColor(Color.BLACK);
+				  mPaint.setStyle(Style.STROKE);
+				  mCanvas.drawCircle( centerX,centerY,3, mPaint);
+				  mPaint.setStrokeWidth(2);
+				  //float deltaHorizontal = 5.0f;
+				  //float deltaVertical = 11.0f;
+				  //mCanvas.drawLine(centerX - deltaHorizontal, centerY - deltaVertical,centerX + deltaHorizontal, centerY - deltaVertical, mPaint);
+				  //mCanvas.drawLine(centerX, centerY - deltaVertical ,centerX, centerY + deltaVertical, mPaint);
+				  //mCanvas.drawLine(centerX - deltaHorizontal, centerY + deltaVertical,centerX + deltaHorizontal, centerY + deltaVertical, mPaint);
+				  mPaint.setStyle(Style.FILL);
+				  mPaint.setTextAlign(Align.CENTER);
+				  float savedTextSize = mPaint.getTextSize();
+				  mPaint.setTextSize(10);
+				  mCanvas.drawText(distanceMarkStr, centerX ,centerY + 15, mPaint);
+				  mPaint.setTextSize(savedTextSize);
+			  }
+	   }
 		  
    }
    
